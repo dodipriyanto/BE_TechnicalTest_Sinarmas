@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #EXMAPLE TO RUN
-# bash recipeChecker.sh fruitList.txt "apple pie"
+# bash unfulfilledOrders.sh orderLists.txt "STRAWBERRY SHORTCAKE" 2019-01-18
 
 orderList=$(cat $1)
 customerOrder="$2"
