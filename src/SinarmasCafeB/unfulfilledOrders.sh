@@ -15,16 +15,28 @@ IFS=$SAVEIFS
 
 max=3
 row=0
+newArray=()
 
 
+#SCRIPT FOR FILTER ORDER LIST
 for i in "${orderList[@]}"
 do
-  if [[ "${i^^}" == *"${customerOrder^^}"* && "${i^^}" == *"FALSE"* ]] ; then
-    if [ $row -le $max ]; then
+  if [[ "${i^^}" == *"${customerOrder^^}"* && "${i^^}" == *"FALSE"* && "${i^^}" == *"$orderDate"* ]] ; then
+    ##save filtered array to new array as newArray variable
+    newArray+=("$i"$'\n')
+  fi
+
+done
+
+#SCRIPT FOR SORT orderList as newArray
+IFS=$'\n' sorted=($(sort <<<"${newArray[@]}"))
+unset IFS
+
+#SHOW ARRAY WITH LIMIT
+for i in "${sorted[@]}"
+do
+  if [ $row -lt $max ]; then
         echo "$i"
-    fi
   fi
   row=$((row + 1))
 done
-
-
