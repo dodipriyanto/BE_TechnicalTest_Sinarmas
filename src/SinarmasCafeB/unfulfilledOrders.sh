@@ -20,7 +20,7 @@ row=0
 for i in "${orderList[@]}"
 do
   if [[ "${i^^}" == *"${customerOrder^^}"* && "${i^^}" == *"FALSE"* && "${i^^}" == *"$orderDate"* ]] ; then
-    if [ $row -le 10 ]; then
+    if [ $row -le $max ]; then
         echo "$i"
     fi
   fi
